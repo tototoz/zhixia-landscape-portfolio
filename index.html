@@ -13,75 +13,273 @@
   <title>张晓菡 · UI 设计作品集</title>
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/park-ui.jpg">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳转到主要内容</a>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="张晓菡，回到首页">
-      <span class="brand-monogram" aria-hidden="true">x<span>.</span></span>
-      <span>张晓菡 <span class="brand-en">XIAOHAN ZHANG</span></span>
-    </a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="打开导航"><span></span><span></span></button>
-    <nav id="main-nav" aria-label="主导航">
-      <a href="#work">精选作品</a>
-      <a href="#about">关于我</a>
-      <button class="nav-resume" data-resume>个人简历</button>
-      <a class="nav-contact" href="#contact">聊聊设计机会</a>
-    </nav>
-  </header>
+  <div class="header-shell">
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="张晓菡，回到首页">
+        <span class="brand-monogram" aria-hidden="true">x<span>.</span></span>
+        <span>张晓菡 <span class="brand-en">XIAOHAN ZHANG</span></span>
+      </a>
+      <div class="header-right">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深色/浅色主题" title="切换主题">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        </button>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="打开导航"><span></span><span></span></button>
+      </div>
+      <nav id="main-nav" aria-label="主导航">
+        <a href="#work">精选作品</a>
+        <a href="#about">关于我</a>
+        <button class="nav-resume" data-resume>个人简历</button>
+        <a class="nav-contact" href="#contact">聊聊机会</a>
+      </nav>
+    </header>
+  </div>
 
   <main id="main">
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">UI DESIGNER <span> / PORTFOLIO 2026</span></p>
-        <div class="availability"><span class="status-dot"></span> 寻找 UI 设计实习与初级岗位</div>
-        <h1 id="hero-title">让体验，<br>自然<span class="title-em">发生。</span></h1>
-        <p class="hero-intro">我是张晓菡，苏州大学风景园林专业。<br>从空间到屏幕，我关注清晰的秩序、细腻的视觉，<br class="desktop-break">以及每一次使用时恰到好处的感受。</p>
-        <div class="hero-actions"><a class="button button-dark" href="#work">浏览作品集</a><button class="text-button" data-resume>查看个人简历 <span class="mini-plus" aria-hidden="true">+</span></button></div>
-        <div class="hero-foot"><span>UI / UX EXPLORATIONS</span><span>空间视角 · 数字体验</span></div>
+    <section class="hero section-wrap" id="home" aria-labelledby="hero-title">
+      <div class="hero-bento">
+        <div class="bento-tile hero-copy">
+          <div class="hero-top-meta">
+            <p class="eyebrow">UI DESIGNER <span>/ PORTFOLIO 2026</span></p>
+            <div class="availability"><span class="status-dot"></span> 寻找 UI 设计实习与初级岗位</div>
+          </div>
+          <h1 id="hero-title">让体验，<br>自然<span class="title-em">发生。</span></h1>
+          <p class="hero-intro">我是张晓菡，苏州大学风景园林专业。<br>从空间到屏幕，我关注清晰的秩序、细腻的视觉，<br class="desktop-break">以及每一次使用时恰到好处的感受。</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#work">浏览作品集 <span aria-hidden="true">↗</span></a>
+            <button class="text-button" data-resume>查看个人简历 <span class="mini-plus" aria-hidden="true">+</span></button>
+          </div>
+          <div class="hero-foot"><span>UI / UX EXPLORATIONS</span><span>空间视角 · 数字体验</span></div>
+        </div>
+
+        <figure class="bento-tile hero-visual">
+          <img src="assets/park-ui.jpg" width="1536" height="1024" fetchpriority="high" alt="栖游公园导览 App 概念界面，展示路线发现页与路线详情页">
+          <figcaption>
+            <div>
+              <span class="image-overline">01 · FEATURED CASE</span>
+              <strong>栖游 · 公园导览 App</strong>
+              <span>移动端 UI · 概念练习</span>
+            </div>
+            <button class="image-open" data-project="wetland" aria-label="查看栖游项目详情">↗</button>
+          </figcaption>
+          <span class="visual-label">CONCEPT / UI</span>
+        </figure>
       </div>
-      <figure class="hero-visual">
-        <img src="assets/park-ui.jpg" width="1536" height="1024" fetchpriority="high" alt="栖游公园导览 App 概念界面，展示路线发现页与路线详情页">
-        <figcaption><div><span class="image-overline">INTERFACE EXPLORATION</span><strong>栖游 · 公园导览 App</strong><span>移动端 UI · 概念练习</span></div><button class="image-open" data-project="wetland" aria-label="查看栖游项目详情">+</button></figcaption>
-        <span class="visual-label">CONCEPT / UI</span>
-      </figure>
+
+      <div class="bento-meta-strip" aria-label="个人概况">
+        <div class="meta-tile">
+          <span class="meta-kicker">LOCATION / TIME</span>
+          <strong class="meta-val">苏州 · <span id="suzhou-time">--:--</span></strong>
+        </div>
+        <div class="meta-tile">
+          <span class="meta-kicker">PERSPECTIVE</span>
+          <strong class="meta-val">空间动线 → 数字体验</strong>
+        </div>
+        <div class="meta-tile">
+          <span class="meta-kicker">DISCIPLINES</span>
+          <strong class="meta-val">界面视觉 · 信息层级 · 原型</strong>
+        </div>
+        <a class="meta-tile meta-tile-link" href="#work">
+          <span class="meta-kicker">ARCHIVE 2026</span>
+          <strong class="meta-val">03 精选概念案例 <span>→</span></strong>
+        </a>
+      </div>
     </section>
 
     <section class="work-section section-wrap" id="work" aria-labelledby="work-title">
-      <div class="section-heading"><div><p class="eyebrow">SELECTED WORKS</p><h2 id="work-title">精选设计<span class="heading-dot">.</span></h2></div><p class="section-note">界面是起点，体验是目的。<br>探索人与信息、自然之间的连接。</p></div>
-      <div class="work-toolbar"><div class="filter-group" role="group" aria-label="按作品类型筛选"><button class="filter active" aria-pressed="true" data-filter="all">全部作品 <span>3</span></button><button class="filter" aria-pressed="false" data-filter="ecology">移动端 UI</button><button class="filter" aria-pressed="false" data-filter="urban">网页 UI</button><button class="filter" aria-pressed="false" data-filter="planting">空间与视觉</button></div><span class="collection-note">UI EXPLORATIONS</span></div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SELECTED WORKS</p>
+          <h2 id="work-title">精选设计<span class="heading-dot">.</span></h2>
+        </div>
+        <p class="section-note">界面是起点，体验是目的。<br>探索人与信息、自然之间的连接。</p>
+      </div>
+      <div class="work-toolbar">
+        <div class="filter-group" role="group" aria-label="按作品类型筛选">
+          <button class="filter active" aria-pressed="true" data-filter="all">全部作品 <span>3</span></button>
+          <button class="filter" aria-pressed="false" data-filter="ecology">移动端 UI</button>
+          <button class="filter" aria-pressed="false" data-filter="urban">网页 UI</button>
+          <button class="filter" aria-pressed="false" data-filter="planting">空间与视觉</button>
+        </div>
+        <span class="collection-note">UI EXPLORATIONS · 01–03</span>
+      </div>
       <p class="sr-only" id="filter-status" role="status" aria-live="polite">显示全部 3 个作品</p>
       <div class="project-grid">
         <article class="project-card project-featured" data-category="ecology">
-          <button class="project-picture" data-project="wetland" aria-label="查看栖游公园导览 App 项目详情"><img src="assets/park-ui.jpg" alt="栖游 App 的路线卡片与行程信息界面" width="1536" height="1024" loading="lazy"><span class="project-type">移动端 UI</span><span class="picture-cta">查看项目 <span aria-hidden="true">+</span></span></button>
-          <div class="project-caption"><div><p class="project-meta">移动端界面 · 概念练习</p><h3><button data-project="wetland">栖游 · 公园导览</button></h3><p>把一段路线，变成一次轻松的出发。</p><div class="case-tags"><span>移动端设计</span><span>任务流程</span><span>交互原型</span></div><button class="case-link" data-project="wetland">探索设计过程 <span>＋</span></button></div><span class="project-en">PARK<br>COMPANION</span></div>
+          <button class="project-picture" data-project="wetland" aria-label="查看栖游公园导览 App 项目详情">
+            <img src="assets/park-ui.jpg" alt="栖游 App 的路线卡片与行程信息界面" width="1536" height="1024" loading="lazy">
+            <span class="project-type">移动端 UI</span>
+            <span class="picture-cta">查看案例 <span aria-hidden="true">↗</span></span>
+          </button>
+          <div class="project-caption">
+            <div>
+              <div class="project-index-row"><span class="project-index">01</span><p class="project-meta">移动端界面 · 概念练习</p></div>
+              <h3><button data-project="wetland">栖游 · 公园导览</button></h3>
+              <p>把一段路线，变成一次轻松的出发。</p>
+              <div class="case-tags"><span>移动端设计</span><span>任务流程</span><span>交互原型</span></div>
+              <button class="case-link" data-project="wetland">探索设计过程 <span>↗</span></button>
+            </div>
+            <span class="project-en">PARK<br>COMPANION</span>
+          </div>
         </article>
         <article class="project-card" data-category="urban">
-          <button class="project-picture" data-project="courtyard" aria-label="查看植间植物展览网站项目详情"><img src="assets/exhibit-ui.jpg" alt="植间植物展览网站的桌面端与移动端布局" width="1536" height="1024" loading="lazy"><span class="project-type">网页 UI</span><span class="picture-cta">查看项目 <span aria-hidden="true">+</span></span></button>
-          <div class="project-caption"><div><p class="project-meta">响应式网站 · 概念练习</p><h3><button data-project="courtyard">植间 · 自然的数字展厅</button></h3><p>以编辑式排版，讲述植物与时间的故事。</p><div class="case-tags"><span>网页设计</span><span>响应式布局</span></div><button class="case-link" data-project="courtyard">探索设计过程 <span>＋</span></button></div><span class="project-en">BOTANICAL<br>EDITORIAL</span></div>
+          <button class="project-picture" data-project="courtyard" aria-label="查看植间植物展览网站项目详情">
+            <img src="assets/exhibit-ui.jpg" alt="植间植物展览网站的桌面端与移动端布局" width="1536" height="1024" loading="lazy">
+            <span class="project-type">网页 UI</span>
+            <span class="picture-cta">查看案例 <span aria-hidden="true">↗</span></span>
+          </button>
+          <div class="project-caption">
+            <div>
+              <div class="project-index-row"><span class="project-index">02</span><p class="project-meta">响应式网站 · 概念练习</p></div>
+              <h3><button data-project="courtyard">植间 · 自然的数字展厅</button></h3>
+              <p>以编辑式排版，讲述植物与时间的故事。</p>
+              <div class="case-tags"><span>网页设计</span><span>响应式布局</span></div>
+              <button class="case-link" data-project="courtyard">探索设计过程 <span>↗</span></button>
+            </div>
+            <span class="project-en">BOTANICAL<br>EDITORIAL</span>
+          </div>
         </article>
         <article class="project-card" data-category="planting">
-          <button class="project-picture" data-project="garden" aria-label="查看时序·会呼吸的花园项目详情"><img src="assets/garden.jpg" alt="白桦、观赏草和宿根花卉构成的自然花园，砾石小径通向木亭" width="1536" height="1024" loading="lazy"><span class="project-type">空间与视觉</span><span class="picture-cta">查看项目 <span aria-hidden="true">+</span></span></button>
-          <div class="project-caption"><div><p class="project-meta">空间与视觉表达 · 补充概念作品</p><h3><button data-project="garden">时序 · 空间里的四季</button></h3><p>关于节奏、层次与自然生长的视觉探索。</p><div class="case-tags"><span>空间思考</span><span>视觉表达</span></div><button class="case-link" data-project="garden">探索设计过程 <span>＋</span></button></div><span class="project-en">SEASONS<br>IN MOTION</span></div>
+          <button class="project-picture" data-project="garden" aria-label="查看时序·会呼吸的花园项目详情">
+            <img src="assets/garden.jpg" alt="白桦、观赏草和宿根花卉构成的自然花园，砾石小径通向木亭" width="1536" height="1024" loading="lazy">
+            <span class="project-type">空间与视觉</span>
+            <span class="picture-cta">查看案例 <span aria-hidden="true">↗</span></span>
+          </button>
+          <div class="project-caption">
+            <div>
+              <div class="project-index-row"><span class="project-index">03</span><p class="project-meta">空间与视觉表达 · 补充概念作品</p></div>
+              <h3><button data-project="garden">时序 · 空间里的四季</button></h3>
+              <p>关于节奏、层次与自然生长的视觉探索。</p>
+              <div class="case-tags"><span>空间思考</span><span>视觉表达</span></div>
+              <button class="case-link" data-project="garden">探索设计过程 <span>↗</span></button>
+            </div>
+            <span class="project-en">SEASONS<br>IN MOTION</span>
+          </div>
         </article>
       </div>
-      <p class="demo-note">概念作品说明：以下项目用于设计方向探索与网站展示，不代表商业委托。景观图片由 AI 生成。</p>
+      <p class="demo-note">概念作品说明：以下项目用于设计方向探索与网站展示，不代表商业委托。展示视觉由 AI 辅助生成。</p>
     </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="section-wrap about-grid">
-        <div class="about-art" aria-hidden="true"><div class="art-frame"><span class="art-label">A SPATIAL PERSPECTIVE</span><svg viewBox="0 0 400 420" fill="none"><g stroke="currentColor" stroke-width="1"><path d="M196 378c5-57-4-98 12-154s-4-109 20-178"/><path d="M206 264C144 260 98 209 93 148c67 10 103 45 113 116ZM213 212c55-10 90-50 101-105-59 10-88 43-101 105ZM218 153c-34-13-62-51-58-96 41 18 58 46 58 96ZM203 317c49-1 81-23 102-66-53-5-85 19-102 66Z"/><path d="m101 158 104 104m99-143-90 91m-49-141 51 78m80 112-89 55"/><path d="m126 183-3 40m27-12 4 39m29-10 2 20m77-85 36-4m-53 29 30-2m-88-94-12 19m26 8-17 15m79 153 26 5"/><path d="M77 373c77 12 169 14 246 0M84 381c77 12 154 15 233 0" stroke-opacity=".4"/></g></svg><div class="art-bottom"><span>把观察，带进设计。</span><span>ZHANG, X.</span></div></div><span class="art-tag">生长 / 连接 / 共生</span></div>
-        <div class="about-copy"><p class="eyebrow">A LITTLE ABOUT ME</p><h2 id="about-title">不同的媒介，<br>同样关注人的体验。</h2><p class="about-lead">我是张晓菡，来自苏州大学风景园林专业。<br class="desktop-break">希望进入 UI 设计团队，参与数字产品设计。</p><p>风景园林与界面设计都需要理解人在环境中如何寻找信息、做出选择和完成行动。我希望把空间动线转化为任务流程，把图面层级转化为信息层级。</p><p>我的求职重点是界面视觉、页面布局与交互细节。这里用自然与公共空间主题展开 UI 概念探索，也保留专业背景作为设计视角。</p><dl class="education"><div><dt>教育背景</dt><dd>苏州大学</dd></div><div><dt>专业背景</dt><dd>风景园林 · 年级待补充</dd></div><div><dt>关注方向</dt><dd>UI 设计 / 信息层级 / 数字体验</dd></div></dl><button class="text-button about-resume" data-resume>了解我的学习与实践 <span class="mini-plus" aria-hidden="true">+</span></button></div>
+        <div class="about-left">
+          <div class="about-art" aria-hidden="true">
+            <div class="art-frame">
+              <span class="art-label">A SPATIAL PERSPECTIVE</span>
+              <svg viewBox="0 0 400 420" fill="none"><g stroke="currentColor" stroke-width="1"><path d="M196 378c5-57-4-98 12-154s-4-109 20-178"/><path d="M206 264C144 260 98 209 93 148c67 10 103 45 113 116ZM213 212c55-10 90-50 101-105-59 10-88 43-101 105ZM218 153c-34-13-62-51-58-96 41 18 58 46 58 96ZM203 317c49-1 81-23 102-66-53-5-85 19-102 66Z"/><path d="m101 158 104 104m99-143-90 91m-49-141 51 78m80 112-89 55"/><path d="m126 183-3 40m27-12 4 39m29-10 2 20m77-85 36-4m-53 29 30-2m-88-94-12 19m26 8-17 15m79 153 26 5"/><path d="M77 373c77 12 169 14 246 0M84 381c77 12 154 15 233 0" stroke-opacity=".4"/></g></svg>
+              <div class="art-bottom"><span>把观察，带进设计。</span><span>ZHANG, X.</span></div>
+            </div>
+            <span class="art-tag">生长 / 连接 / 共生</span>
+          </div>
+          <div class="about-facts-bento">
+            <div><span>学校</span><strong>苏州大学</strong></div>
+            <div><span>专业</span><strong>风景园林</strong></div>
+            <div><span>方向</span><strong>UI / UX 设计</strong></div>
+            <div><span>状态</span><strong>2026 求职中</strong></div>
+          </div>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">A LITTLE ABOUT ME</p>
+          <h2 id="about-title">不同的媒介，<br>同样关注<span class="title-em">人的体验。</span></h2>
+          <p class="about-lead">我是张晓菡，来自苏州大学风景园林专业。<br class="desktop-break">希望进入 UI 设计团队，参与数字产品设计。</p>
+          <p>风景园林与界面设计都需要理解人在环境中如何寻找信息、做出选择和完成行动。我希望把空间动线转化为任务流程，把图面层级转化为信息层级。</p>
+          <p>我的求职重点是界面视觉、页面布局与交互细节。这里用自然与公共空间主题展开 UI 概念探索，也保留专业背景作为设计视角。</p>
+          <dl class="education">
+            <div><dt>教育背景</dt><dd>苏州大学</dd></div>
+            <div><dt>专业背景</dt><dd>风景园林 · 年级待补充</dd></div>
+            <div><dt>关注方向</dt><dd>UI 设计 / 信息层级 / 数字体验</dd></div>
+          </dl>
+          <button class="text-button about-resume" data-resume>了解我的学习与实践 <span class="mini-plus" aria-hidden="true">+</span></button>
+        </div>
       </div>
     </section>
 
-    <section class="process-section section-wrap" aria-labelledby="process-title"><div class="section-heading"><div><p class="eyebrow">HOW I WORK</p><h2 id="process-title">好看的背后，有清晰的思考。</h2></div><p class="section-note">概念案例采用的设计路径。<br>让视觉表达有明确的使用目的。</p></div><div class="process-grid"><article><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="17" r="10"/><path d="m25 25 10 10M17 11v12m-6-6h12"/></svg><h3>任务与信息</h3><p>先定义谁在什么情境下完成什么任务，再梳理页面信息与关键入口。概念假设与真实调研分开呈现。</p><div class="skill-tags"><span>任务流程</span><span>信息架构</span><span>线框图</span></div></article><article><svg viewBox="0 0 40 40" aria-hidden="true"><path d="m20 5 15 9-15 9-15-9 15-9Zm-15 17 15 9 15-9M5 30l15 9 15-9"/></svg><h3>布局与组件</h3><p>从低保真结构推敲到视觉界面，统一色彩、字体、间距与按钮状态，建立可复用的表达。</p><div class="skill-tags"><span>视觉层级</span><span>组件规范</span><span>响应式布局</span></div></article><article><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="6" width="30" height="28" rx="1"/><path d="m5 27 10-10 8 8 5-5 7 8M26 14h1"/></svg><h3>原型与迭代</h3><p>串联核心操作，检查反馈、空状态与移动端阅读。下一步用真实用户反馈验证设计假设。</p><div class="skill-tags"><span>可点击原型</span><span>状态反馈</span><span>可用性检查</span></div></article></div><p class="demo-note">Figma、Photoshop 等工具的使用经历与熟练程度待本人补充；此处不作为技能认证。</p></section>
+    <section class="process-section section-wrap" aria-labelledby="process-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">HOW I WORK</p>
+          <h2 id="process-title">好看的背后，有清晰的思考<span class="heading-dot">.</span></h2>
+        </div>
+        <p class="section-note">概念案例采用的设计路径。<br>让视觉表达有明确的使用目的。</p>
+      </div>
+      <div class="process-grid">
+        <article>
+          <div class="process-top"><span class="process-num">01</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="17" r="10"/><path d="m25 25 10 10M17 11v12m-6-6h12"/></svg></div>
+          <h3>任务与信息</h3>
+          <p>先定义谁在什么情境下完成什么任务，再梳理页面信息与关键入口。概念假设与真实调研分开呈现。</p>
+          <div class="skill-tags"><span>任务流程</span><span>信息架构</span><span>线框图</span></div>
+        </article>
+        <article>
+          <div class="process-top"><span class="process-num">02</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="m20 5 15 9-15 9-15-9 15-9Zm-15 17 15 9 15-9M5 30l15 9 15-9"/></svg></div>
+          <h3>布局与组件</h3>
+          <p>从低保真结构推敲到视觉界面，统一色彩、字体、间距与按钮状态，建立可复用的表达。</p>
+          <div class="skill-tags"><span>视觉层级</span><span>组件规范</span><span>响应式布局</span></div>
+        </article>
+        <article>
+          <div class="process-top"><span class="process-num">03</span><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="6" width="30" height="28" rx="1"/><path d="m5 27 10-10 8 8 5-5 7 8M26 14h1"/></svg></div>
+          <h3>原型与迭代</h3>
+          <p>串联核心操作，检查反馈、空状态与移动端阅读。下一步用真实用户反馈验证设计假设。</p>
+          <div class="skill-tags"><span>可点击原型</span><span>状态反馈</span><span>可用性检查</span></div>
+        </article>
+      </div>
+      <p class="demo-note">Figma、Photoshop 等工具的使用经历与熟练程度待本人补充；此处不作为技能认证。</p>
+    </section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="section-wrap"><div class="contact-top"><p class="eyebrow">LET’S DESIGN SOMETHING USEFUL</p><span class="availability light"><span class="status-dot"></span> 寻找 UI 设计机会</span></div><div class="contact-grid"><div><h2 id="contact-title">期待一起，<br><span>设计更好的体验。</span></h2><p>如果你的团队正在寻找关注视觉与体验的新人，<br>期待聊聊 UI 设计相关的工作机会。</p></div><div class="contact-info"><dl><div><dt>意向岗位</dt><dd>UI 设计实习生 / 初级 UI 设计师</dd></div><div><dt>意向城市</dt><dd>意向城市待补充</dd></div><div><dt>到岗安排</dt><dd>待补充 · 可按岗位沟通</dd></div></dl><div class="email-label">联系邮箱 <span>示例地址，不接收求职邮件</span></div><button class="email-copy" data-copy-email aria-label="复制示例邮箱 xiaohan@example.com">xiaohan@example.com <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="1"/><path d="M15 8V3H3v13h5"/></svg></button><div class="contact-actions"><button class="button button-light" data-resume>查看简历</button><button class="text-button light-text" data-copy-email>复制示例邮箱</button></div></div></div></div></section>
+    <section class="contact-section section-wrap" id="contact" aria-labelledby="contact-title">
+      <div class="contact-card">
+        <div class="contact-top">
+          <p class="eyebrow">LET’S DESIGN SOMETHING USEFUL</p>
+          <span class="availability light"><span class="status-dot"></span> 寻找 UI 设计机会</span>
+        </div>
+        <div class="contact-grid">
+          <div>
+            <h2 id="contact-title">期待一起，<br><span>设计更好的体验。</span></h2>
+            <p>如果你的团队正在寻找关注视觉与体验的新人，<br>期待聊聊 UI 设计相关的工作机会。</p>
+          </div>
+          <div class="contact-info">
+            <dl>
+              <div><dt>意向岗位</dt><dd>UI 设计实习生 / 初级 UI 设计师</dd></div>
+              <div><dt>意向城市</dt><dd>意向城市待补充</dd></div>
+              <div><dt>到岗安排</dt><dd>待补充 · 可按岗位沟通</dd></div>
+            </dl>
+            <div class="email-label">联系邮箱 <span>示例地址，不接收求职邮件</span></div>
+            <button class="email-copy" data-copy-email aria-label="复制示例邮箱 xiaohan@example.com">
+              <span>xiaohan@example.com</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="13" rx="1"/><path d="M15 8V3H3v13h5"/></svg>
+            </button>
+            <div class="contact-actions">
+              <button class="button button-light" data-resume>查看简历</button>
+              <button class="text-button light-text" data-copy-email>复制示例邮箱</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="site-footer"><div><a href="#home" class="footer-name">张晓菡 <span>XIAOHAN ZHANG</span></a><p>概念作品集 · UI / UX & SPATIAL THINKING</p></div><span>用心观察，认真设计。<br><span class="copyright">© 2026 · CONCEPT PORTFOLIO</span></span></footer>
+
+  <footer class="site-footer section-wrap">
+    <div>
+      <a href="#home" class="footer-name">张晓菡 <span>XIAOHAN ZHANG</span></a>
+      <p>概念作品集 · UI / UX & SPATIAL THINKING</p>
+    </div>
+    <span>用心观察，认真设计。<br><span class="copyright">© 2026 · CONCEPT PORTFOLIO</span></span>
+  </footer>
+
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="project-dialog" class="project-dialog" aria-labelledby="detail-title"><button class="dialog-close" aria-label="关闭项目详情">×</button><div id="project-content"></div></dialog>
   <dialog id="resume-dialog" class="resume-dialog" aria-labelledby="resume-title"><button class="dialog-close" aria-label="关闭简历">×</button><div class="resume-sheet"><p class="eyebrow">CURRICULUM VITAE / 待完善</p><div class="resume-title-row"><div><h2 id="resume-title">张晓菡</h2><p>求职方向 · UI 设计</p></div><svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 34V14M20 25C6 25 5 13 8 5c12 0 16 9 12 20ZM20 29c13 0 16-11 13-18-10 1-15 7-13 18Z" stroke="currentColor" stroke-width="1.5"/></svg></div><div class="resume-basics">意向城市待补充 · xiaohan@example.com（示例邮箱）<br>到岗时间与实习周期待沟通</div><section><h3>教育背景</h3><div class="resume-row"><strong>苏州大学 · 风景园林本科</strong><span>就读时间待补充</span></div><p>专业背景：风景园林。年级、课程、成绩及相关经历待本人补充。</p></section><section><h3>作品方向 · 概念示例</h3><div class="resume-row"><strong>栖游 · 公园导览 App</strong><span>移动端 UI</span></div><p>围绕路线选择设计发现页、路线详情与开始游览流程；呈现卡片层级、筛选反馈和组件状态。</p><div class="resume-row"><strong>植间 · 植物展览网站</strong><span>网页 UI</span></div><p>组织展览介绍、参观信息和植物内容，探索桌面与移动端的响应式信息布局。</p><p>以上为作品集结构示例，待替换为本人独立完成的项目与过程材料。</p></section><section><h3>技能与工具</h3><p>待补充实际掌握的设计工具、使用经验与作品链接。建议用具体项目说明界面布局、视觉表达与原型制作能力。</p></section><section><h3>求职介绍</h3><p>苏州大学风景园林专业，求职方向为 UI 设计。希望把空间组织、视觉层级与以人为中心的思考带入数字产品设计。</p></section><p class="resume-disclaimer">姓名、学校、专业与求职方向已确认；项目为概念示例。正式投递前需补充真实项目、技能和联系方式。</p></div><div class="resume-controls"><p>可在打印窗口选择「存储为 PDF」。</p><button class="button button-dark" id="print-resume">打印 / 保存 PDF</button></div></dialog>
