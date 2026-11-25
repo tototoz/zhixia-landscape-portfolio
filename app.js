@@ -64,8 +64,15 @@ const drawings = {
   garden: `<svg viewBox="0 0 760 300" role="img" aria-labelledby="garden-diagram"><title id="garden-diagram">花园乔木、观赏草和宿根花卉的概念植物层次示意</title><path d="M0 0H760V300H0Z" fill="#f0f3e9"/><path d="M0 248Q200 232 390 249T760 240" stroke="#98a382" stroke-width="2"/><g fill="#c4d1ad" stroke="#829767"><ellipse cx="128" cy="80" rx="65" ry="60"/><ellipse cx="244" cy="62" rx="50" ry="44"/><ellipse cx="659" cy="91" rx="54" ry="65"/></g><g stroke="#8b8b70" stroke-width="5"><path d="M128 76v169M244 62v179M659 91v150"/></g><g stroke="#8da071" stroke-width="2" fill="none"><path d="M355 246q-25-81-55-94m55 94q0-113-20-132m20 132q21-96 35-114m-35 114q-6-105 3-142m170 140q-25-81-55-94m55 94q0-113-20-132m20 132q21-96 35-114m-35 114q-6-105 3-142"/></g><g fill="#b8a0b8" stroke="#8a7f9a"><circle cx="421" cy="202" r="8"/><circle cx="440" cy="191" r="8"/><circle cx="462" cy="212" r="8"/><circle cx="191" cy="206" r="8"/><circle cx="211" cy="197" r="8"/></g><g stroke="#81936b"><path d="M421 202v43M440 191v54M462 212v32M191 206v36M211 197v45"/></g><g font-family="sans-serif" font-size="15" fill="#375340"><text x="91" y="278">疏林骨架</text><text x="315" y="278">观赏草层</text><text x="405" y="175">宿根花卉</text><text x="573" y="278">季相与生长</text></g></svg>`
 };
 
+const PAGE_TITLES = {
+  home: '张晓菡 · 个人主页',
+  works: '作品展示 · 张晓菡',
+  resume: '个人简历 · 张晓菡',
+  about: '关于我 · 张晓菡',
+  contact: '联系我 · 张晓菡'
+};
+
 const projectDialog = document.querySelector('#project-dialog');
-const resumeDialog = document.querySelector('#resume-dialog');
 const toast = document.querySelector('#toast');
 let toastTimer;
 
@@ -76,21 +83,68 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
 }
 
+// Multi-page Router
+const pages = document.querySelectorAll('.page-view');
+const navLinks = document.querySelectorAll('#main-nav [data-route-link]');
+
+function navigateTo(pageName, pushHash = true) {
+  const target = PAGE_TITLES[pageName] ? pageName : 'home';
+  pages.forEach(section => {
+    const isTarget = section.dataset.page === target;
+    section.hidden = !isTarget;
+    section.classList.toggle('active', isTarget);
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.routeLink === target);
+  });
+  document.title = PAGE_TITLES[target];
+  if (pushHash && location.hash !== '#' + target) {
+    history.pushState(null, '', '#' + target);
+  }
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  closeMenu();
+}
+
+document.addEventListener('click', event => {
+  const routeLink = event.target.closest('[data-route-link]');
+  if (routeLink) {
+    event.preventDefault();
+    navigateTo(routeLink.dataset.routeLink, true);
+    return;
+  }
+  const projectButton = event.target.closest('[data-project]');
+  if (projectButton) openProject(projectButton.dataset.project);
+  const tab = event.target.closest('.detail-tab');
+  if (tab) activateTab(tab);
+});
+
+window.addEventListener('hashchange', () => {
+  const hashPage = location.hash.replace('#', '') || 'home';
+  navigateTo(hashPage, false);
+});
+
+// Initialize page from URL hash
+const initialPage = location.hash.replace('#', '') || 'home';
+navigateTo(initialPage, false);
+
+// Dialog handling
 function openDialog(dialog) {
   dialog.showModal();
   document.body.classList.add('modal-open');
   dialog.scrollTop = 0;
 }
 
-document.querySelectorAll('dialog').forEach(dialog => {
-  dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
-  dialog.addEventListener('click', event => {
-    if (event.target !== dialog) return;
-    const box = dialog.getBoundingClientRect();
-    if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+if (projectDialog) {
+  projectDialog.querySelector('.dialog-close').addEventListener('click', () => projectDialog.close());
+  projectDialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
+  projectDialog.addEventListener('click', event => {
+    if (event.target !== projectDialog) return;
+    const box = projectDialog.getBoundingClientRect();
+    if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) {
+      projectDialog.close();
+    }
   });
-});
+}
 
 function openProject(key) {
   const p = projects[key];
@@ -110,17 +164,6 @@ function openProject(key) {
   if (!projectDialog.open) openDialog(projectDialog);
   else { projectDialog.scrollTop = 0; projectDialog.querySelector('.dialog-close').focus(); }
 }
-
-document.addEventListener('click', event => {
-  const projectButton = event.target.closest('[data-project]');
-  if (projectButton) openProject(projectButton.dataset.project);
-  if (event.target.closest('[data-resume]')) {
-    closeMenu();
-    openDialog(resumeDialog);
-  }
-  const tab = event.target.closest('.detail-tab');
-  if (tab) activateTab(tab);
-});
 
 function activateTab(tab) {
   projectDialog.querySelectorAll('.detail-tab').forEach(button => {
@@ -160,6 +203,7 @@ document.querySelectorAll('[data-filter]').forEach(button => {
   });
 });
 
+// Mobile menu
 const menuButton = document.querySelector('.menu-toggle');
 const menu = document.querySelector('#main-nav');
 function closeMenu() {
@@ -173,7 +217,6 @@ menuButton.addEventListener('click', () => {
   menuButton.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
   menu.classList.toggle('open', open);
 });
-menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 document.addEventListener('click', event => {
   if (menu.classList.contains('open') && !event.target.closest('.site-header')) {
@@ -214,45 +257,7 @@ function updateSuzhouTime() {
 updateSuzhouTime();
 setInterval(updateSuzhouTime, 30000);
 
-// Sticky header state
-const siteHeader = document.querySelector('.site-header');
-const updateHeaderState = () => {
-  siteHeader.classList.toggle('scrolled', window.scrollY > 12);
-};
-window.addEventListener('scroll', updateHeaderState, { passive: true });
-updateHeaderState();
-
-// Active nav link & subtle scroll reveal
-const navLinks = Array.from(document.querySelectorAll('#main-nav a[href^="#"]'));
-const trackedSections = navLinks
-  .map(link => document.querySelector(link.getAttribute('href')))
-  .filter(Boolean);
-
-if ('IntersectionObserver' in window) {
-  const navObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const id = '#' + entry.target.id;
-      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === id));
-    });
-  }, { rootMargin: '-35% 0px -55% 0px' });
-  trackedSections.forEach(section => navObserver.observe(section));
-
-  const revealTargets = document.querySelectorAll('.project-card, .process-grid article, .about-art, .about-copy, .index-item');
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealTargets.forEach(el => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-  });
-}
-
+// Email copy
 document.querySelectorAll('[data-copy-email]').forEach(button => {
   button.addEventListener('click', async () => {
     const email = 'xiaohan@example.com';
@@ -274,7 +279,11 @@ document.querySelectorAll('[data-copy-email]').forEach(button => {
   });
 });
 
-document.querySelector('#print-resume').addEventListener('click', () => window.print());
+// Print resume
+const printBtn = document.querySelector('#print-resume');
+if (printBtn) {
+  printBtn.addEventListener('click', () => window.print());
+}
 
 function parkPrototype() {
   return `<div class="prototype"><div class="prototype-head"><span>栖游 · 交互演示</span><span>示例数据</span></div><h3>找到适合今天的路线</h3><div class="prototype-filters" role="group" aria-label="游览偏好"><button data-route="walk" aria-pressed="true">轻松散步</button><button data-route="family" aria-pressed="false">亲子友好</button></div><div id="route-card"><h4>水岸漫步</h4><p>2.4 km · 约 45 分钟 · 平缓步道</p></div><button class="button button-dark" id="route-details">查看路线详情</button><div id="route-detail" hidden><p id="route-description">沿水岸步道前行，途中设有休憩点。部分路段有树荫。</p><button class="button button-dark" id="route-start">开始游览演示</button></div><p id="route-feedback" role="status" aria-live="polite"></p></div>`;
