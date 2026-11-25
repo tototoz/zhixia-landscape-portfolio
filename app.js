@@ -238,7 +238,7 @@ if ('IntersectionObserver' in window) {
   }, { rootMargin: '-35% 0px -55% 0px' });
   trackedSections.forEach(section => navObserver.observe(section));
 
-  const revealTargets = document.querySelectorAll('.project-card, .process-grid article, .about-left, .about-copy, .meta-tile');
+  const revealTargets = document.querySelectorAll('.project-card, .process-grid article, .about-art, .about-copy, .index-item');
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
