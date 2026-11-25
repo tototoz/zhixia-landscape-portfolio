@@ -127,6 +127,50 @@ menuButton.addEventListener('click', () => {
 });
 menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+document.addEventListener('click', event => {
+  if (menu.classList.contains('open') && !event.target.closest('.site-header')) {
+    closeMenu();
+  }
+});
+
+// Sticky header state
+const siteHeader = document.querySelector('.site-header');
+const updateHeaderState = () => {
+  siteHeader.classList.toggle('scrolled', window.scrollY > 12);
+};
+window.addEventListener('scroll', updateHeaderState, { passive: true });
+updateHeaderState();
+
+// Active nav link & subtle scroll reveal
+const navLinks = Array.from(document.querySelectorAll('#main-nav a[href^="#"]'));
+const trackedSections = navLinks
+  .map(link => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
+
+if ('IntersectionObserver' in window) {
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = '#' + entry.target.id;
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === id));
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  trackedSections.forEach(section => navObserver.observe(section));
+
+  const revealTargets = document.querySelectorAll('.project-card, .process-grid article, .about-art, .about-copy');
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealTargets.forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+}
 
 document.querySelectorAll('[data-copy-email]').forEach(button => {
   button.addEventListener('click', async () => {
