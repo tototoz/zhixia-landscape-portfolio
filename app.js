@@ -41,6 +41,9 @@ function navigateTo(pageName, pushHash = true) {
     document.documentElement.removeAttribute('data-work-theme');
   }
 
+  // Toggle body.is-home so the homepage stays free of redundant top nav
+  document.body.classList.toggle('is-home', target === 'home');
+
   // Highlight active nav item (work detail pages highlight "作品")
   const navActiveKey = WORK_THEMES.has(target) ? 'works' : target;
   navLinks.forEach(link => {

@@ -53,64 +53,43 @@
   </header>
 
   <main id="main">
-    <!-- PAGE 1: MODERN NEUTRAL PERSONAL HOMEPAGE -->
+    <!-- PAGE 1: MINIMAL PERSONAL HOMEPAGE (DIRECT OPTIONS ONLY) -->
     <section class="page-view active" id="page-home" data-page="home" aria-labelledby="hero-title">
-      <div class="section-wrap home-shell">
-        <div class="home-hero">
-          <div class="home-hero-main">
-            <div class="availability"><span class="status-dot"></span> 个人主页 · 寻找 UI 设计实习与初级岗位</div>
-            <h1 id="hero-title">你好，我是<br><span class="title-em">张晓菡。</span></h1>
-            <p class="hero-intro">苏州大学风景园林专业在读，求职方向为 UI 设计。<br>习惯从空间动线与人的行为出发，构建清晰、有温度的数字界面体验。</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#works" data-route-link="works">浏览全部作品 ↗</a>
-              <a class="text-button" href="#resume" data-route-link="resume">查看个人简历 <span class="mini-plus" aria-hidden="true">+</span></a>
-            </div>
+      <div class="section-wrap home-minimal">
+        <header class="home-minimal-head">
+          <div>
+            <h1 id="hero-title">张晓菡</h1>
+            <p>苏州大学 · 风景园林 · 求职方向 UI 设计</p>
           </div>
+          <span class="home-time">苏州 · <span id="suzhou-time">--:--</span></span>
+        </header>
 
-          <aside class="home-profile-card" aria-label="个人名片">
-            <div class="profile-row"><span>LOCATION</span><strong>中国 · 苏州（<span id="suzhou-time">--:--</span>）</strong></div>
-            <div class="profile-row"><span>UNIVERSITY</span><strong>苏州大学 · 风景园林</strong></div>
-            <div class="profile-row"><span>TARGET ROLE</span><strong>UI 设计实习生 / 初级 UI</strong></div>
-            <div class="profile-row"><span>FOCUS</span><strong>界面视觉 · 信息层级 · 交互原型</strong></div>
-            <div class="profile-actions">
-              <a href="#about" data-route-link="about">关于我的设计视角 →</a>
-              <a href="#contact" data-route-link="contact">联系合作 →</a>
-            </div>
-          </aside>
-        </div>
-
-        <div class="home-works-preview">
-          <div class="preview-header">
-            <span class="eyebrow">FEATURED WORKS · 点击进入独立主题页面</span>
-            <a href="#works" data-route-link="works" class="preview-all">全部作品 (03) →</a>
-          </div>
-          <div class="preview-grid">
-            <a class="preview-card" href="#work-wetland" data-route-link="work-wetland">
-              <div class="preview-thumb"><img src="assets/park-ui.jpg" alt="栖游公园导览 App 概念界面" width="1536" height="1024"></div>
-              <div class="preview-info">
-                <span class="preview-tag">01 · 移动端 UI · 户外森系风格</span>
-                <h2>栖游 · 公园导览 App</h2>
-                <p>把一段路线，变成一次轻松的出发。</p>
-              </div>
-            </a>
-            <a class="preview-card" href="#work-courtyard" data-route-link="work-courtyard">
-              <div class="preview-thumb"><img src="assets/exhibit-ui.jpg" alt="植间植物展览网站布局" width="1536" height="1024"></div>
-              <div class="preview-info">
-                <span class="preview-tag">02 · 网页 UI · 展馆画册风格</span>
-                <h2>植间 · 自然的数字展厅</h2>
-                <p>以编辑式排版，讲述植物与时间的故事。</p>
-              </div>
-            </a>
-            <a class="preview-card" href="#work-garden" data-route-link="work-garden">
-              <div class="preview-thumb"><img src="assets/garden.jpg" alt="时序会呼吸的花园实景概念图" width="1536" height="1024"></div>
-              <div class="preview-info">
-                <span class="preview-tag">03 · 空间与视觉 · 晨雾季相风格</span>
-                <h2>时序 · 空间里的四季</h2>
-                <p>关于节奏、层次与自然生长的视觉探索。</p>
-              </div>
-            </a>
-          </div>
-        </div>
+        <nav class="home-options" aria-label="主页选项">
+          <a class="home-option" href="#works" data-route-link="works">
+            <span class="opt-num">01</span>
+            <span class="opt-title">作品展示</span>
+            <span class="opt-desc">栖游 App · 植间展厅 · 时序花园</span>
+            <span class="opt-arrow">→</span>
+          </a>
+          <a class="home-option" href="#resume" data-route-link="resume">
+            <span class="opt-num">02</span>
+            <span class="opt-title">个人简历</span>
+            <span class="opt-desc">教育背景 · 代表项目 · 在线打印 PDF</span>
+            <span class="opt-arrow">→</span>
+          </a>
+          <a class="home-option" href="#about" data-route-link="about">
+            <span class="opt-num">03</span>
+            <span class="opt-title">关于我</span>
+            <span class="opt-desc">从空间设计到界面体验的思考</span>
+            <span class="opt-arrow">→</span>
+          </a>
+          <a class="home-option" href="#contact" data-route-link="contact">
+            <span class="opt-num">04</span>
+            <span class="opt-title">联系我</span>
+            <span class="opt-desc">实习与初级 UI 岗位沟通</span>
+            <span class="opt-arrow">→</span>
+          </a>
+        </nav>
       </div>
     </section>
 

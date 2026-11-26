@@ -441,21 +441,7 @@ button:disabled {
   padding-bottom: 88px;
 }
 
-/* Home Page (Clean Neutral Studio Portal) */
-.home-shell {
-  padding-top: 64px;
-  padding-bottom: 80px;
-}
-
-.home-hero {
-  display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  gap: 56px;
-  align-items: center;
-  padding-bottom: 64px;
-  border-bottom: 1px solid var(--line);
-}
-
+/* Shared Buttons & Status Dot */
 .availability {
   font-size: 0.8125rem;
   display: inline-flex;
@@ -486,33 +472,6 @@ button:disabled {
   0% { transform: scale(0.8); opacity: 0.9; }
   70% { transform: scale(1.9); opacity: 0; }
   100% { transform: scale(1.9); opacity: 0; }
-}
-
-.home-hero h1 {
-  font-size: clamp(3rem, 5vw, 4.4rem);
-  line-height: 1.14;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  margin: 22px 0 20px;
-}
-
-.title-em {
-  color: var(--muted);
-  font-weight: 400;
-}
-
-.hero-intro {
-  font-size: 1rem;
-  color: var(--muted);
-  line-height: 1.9;
-  max-width: 480px;
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  margin-top: 32px;
 }
 
 .button {
@@ -560,113 +519,127 @@ button:disabled {
   font-weight: 300;
 }
 
-.home-profile-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 28px 30px;
-  box-shadow: var(--shadow-sm);
+/* Minimal Home Page: Hide redundant top nav on #home so only direct options are shown */
+body.is-home .site-header {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
 }
 
-.profile-row {
+body.is-home .site-header .brand,
+body.is-home .site-header nav,
+body.is-home .site-header .menu-toggle {
+  display: none;
+}
+
+body.is-home .header-inner {
+  justify-content: flex-end;
+  height: 60px;
+}
+
+.home-minimal {
+  max-width: 720px;
+  padding-top: 72px;
+  padding-bottom: 88px;
+}
+
+.home-minimal-head {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  padding: 12px 0;
+  align-items: flex-end;
+  gap: 20px;
+  padding-bottom: 36px;
   border-bottom: 1px solid var(--line);
 }
 
-.profile-row span {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  color: var(--muted-light);
+.home-minimal-head h1 {
+  font-size: clamp(2.4rem, 4.5vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
-.profile-row strong {
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-align: right;
+.home-minimal-head p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 8px;
 }
 
-.profile-actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 18px;
+.home-time {
   font-size: 0.85rem;
-  color: var(--muted);
+  color: var(--muted-light);
+  white-space: nowrap;
 }
 
-.profile-actions a:hover {
-  color: var(--ink);
-}
-
-.home-works-preview {
-  padding-top: 48px;
-}
-
-.preview-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.preview-all {
-  font-size: 0.875rem;
-  color: var(--muted);
-  transition: color 0.2s ease;
-}
-
-.preview-all:hover {
-  color: var(--ink);
-}
-
-.preview-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.preview-card {
+.home-options {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-.preview-thumb {
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--band);
-  box-shadow: var(--shadow-sm);
+.home-option {
+  display: grid;
+  grid-template-columns: 44px 140px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 6px;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left 0.2s ease, border-color 0.2s ease;
 }
 
-.preview-thumb img {
-  aspect-ratio: 3 / 2;
-  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+.home-option:hover {
+  padding-left: 14px;
+  border-bottom-color: var(--ink);
 }
 
-.preview-card:hover .preview-thumb img {
-  transform: scale(1.03);
-}
-
-.preview-tag {
-  display: block;
-  font-size: 0.72rem;
+.opt-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
   color: var(--muted-light);
-  margin-bottom: 6px;
 }
 
-.preview-info h2 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 4px;
+.opt-title {
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
-.preview-info p {
-  font-size: 0.875rem;
+.opt-desc {
+  font-size: 0.9rem;
   color: var(--muted);
+}
+
+.opt-arrow {
+  font-size: 1.15rem;
+  color: var(--muted-light);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.home-option:hover .opt-arrow {
+  transform: translateX(4px);
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .home-minimal {
+    padding-top: 32px;
+  }
+  .home-minimal-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .home-option {
+    grid-template-columns: 32px 1fr auto;
+    gap: 8px 14px;
+    padding: 22px 2px;
+  }
+  .opt-desc {
+    grid-column: 2;
+    font-size: 0.85rem;
+  }
+  .opt-arrow {
+    grid-row: 1 / 3;
+    grid-column: 3;
+  }
 }
 
 /* Section Headings */
