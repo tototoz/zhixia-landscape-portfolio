@@ -53,43 +53,77 @@
   </header>
 
   <main id="main">
-    <!-- PAGE 1: MINIMAL PERSONAL HOMEPAGE (DIRECT OPTIONS ONLY) -->
+    <!-- PAGE 1: REFINED BENTO PERSONAL HOMEPAGE -->
     <section class="page-view active" id="page-home" data-page="home" aria-labelledby="hero-title">
-      <div class="section-wrap home-minimal">
-        <header class="home-minimal-head">
-          <div>
-            <h1 id="hero-title">张晓菡</h1>
-            <p>苏州大学 · 风景园林 · 求职方向 UI 设计</p>
-          </div>
-          <span class="home-time">苏州 · <span id="suzhou-time">--:--</span></span>
-        </header>
+      <div class="home-stage">
+        <div class="home-container">
+          <header class="home-identity">
+            <div class="identity-left">
+              <div class="identity-avatar" aria-hidden="true">
+                <img src="assets/mark.svg" alt="" width="28" height="28">
+              </div>
+              <div>
+                <h1 id="hero-title">张晓菡 <span class="identity-en">XIAOHAN ZHANG</span></h1>
+                <p>苏州大学 · 风景园林 · 求职方向 UI 设计</p>
+              </div>
+            </div>
+            <div class="identity-right">
+              <span class="availability-pill"><span class="status-dot"></span> 寻找 UI 设计机会</span>
+              <span class="home-time">苏州 · <span id="suzhou-time">--:--</span></span>
+            </div>
+          </header>
 
-        <nav class="home-options" aria-label="主页选项">
-          <a class="home-option" href="#works" data-route-link="works">
-            <span class="opt-num">01</span>
-            <span class="opt-title">作品展示</span>
-            <span class="opt-desc">栖游 App · 植间展厅 · 时序花园</span>
-            <span class="opt-arrow">→</span>
-          </a>
-          <a class="home-option" href="#resume" data-route-link="resume">
-            <span class="opt-num">02</span>
-            <span class="opt-title">个人简历</span>
-            <span class="opt-desc">教育背景 · 代表项目 · 在线打印 PDF</span>
-            <span class="opt-arrow">→</span>
-          </a>
-          <a class="home-option" href="#about" data-route-link="about">
-            <span class="opt-num">03</span>
-            <span class="opt-title">关于我</span>
-            <span class="opt-desc">从空间设计到界面体验的思考</span>
-            <span class="opt-arrow">→</span>
-          </a>
-          <a class="home-option" href="#contact" data-route-link="contact">
-            <span class="opt-num">04</span>
-            <span class="opt-title">联系我</span>
-            <span class="opt-desc">实习与初级 UI 岗位沟通</span>
-            <span class="opt-arrow">→</span>
-          </a>
-        </nav>
+          <nav class="home-bento-grid" aria-label="主页选项">
+            <a class="bento-option bento-works" href="#works" data-route-link="works">
+              <div class="bento-head">
+                <span class="bento-num">01 / WORKS</span>
+                <span class="bento-arrow">↗</span>
+              </div>
+              <div class="bento-thumbs" aria-hidden="true">
+                <img src="assets/park-ui.jpg" alt="">
+                <img src="assets/exhibit-ui.jpg" alt="">
+                <img src="assets/garden.jpg" alt="">
+              </div>
+              <div class="bento-foot">
+                <h2>作品展示</h2>
+                <p>栖游 App · 植间展厅 · 时序花园（3 个独立风格作品页）</p>
+              </div>
+            </a>
+
+            <a class="bento-option bento-resume" href="#resume" data-route-link="resume">
+              <div class="bento-head">
+                <span class="bento-num">02 / RESUME</span>
+                <span class="bento-arrow">→</span>
+              </div>
+              <div class="bento-foot">
+                <h2>个人简历</h2>
+                <p>教育背景、代表项目与在线打印 / 保存 PDF</p>
+              </div>
+            </a>
+
+            <a class="bento-option bento-about" href="#about" data-route-link="about">
+              <div class="bento-head">
+                <span class="bento-num">03 / ABOUT</span>
+                <span class="bento-arrow">→</span>
+              </div>
+              <div class="bento-foot">
+                <h2>关于我</h2>
+                <p>从风景园林空间动线到数字界面体验的设计思考</p>
+              </div>
+            </a>
+
+            <a class="bento-option bento-contact" href="#contact" data-route-link="contact">
+              <div class="bento-head">
+                <span class="bento-num">04 / CONTACT</span>
+                <span class="bento-arrow">↗</span>
+              </div>
+              <div class="bento-foot">
+                <h2>联系我</h2>
+                <p>期待与团队聊聊 UI 设计实习与初级岗位机会</p>
+              </div>
+            </a>
+          </nav>
+        </div>
       </div>
     </section>
 
