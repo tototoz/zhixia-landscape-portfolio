@@ -175,6 +175,48 @@ if (printBtn) {
   printBtn.addEventListener('click', () => window.print());
 }
 
+// Interactive homepage showcase carousel & hover sync
+const SLIDES = [
+  { route: 'work-wetland', kicker: 'CASE 01 · 户外森系风格', title: '栖游 · 公园导览 App ↗' },
+  { route: 'work-courtyard', kicker: 'CASE 02 · 展馆画册风格', title: '植间 · 自然的数字展厅 ↗' },
+  { route: 'work-garden', kicker: 'CASE 03 · 晨雾季相风格', title: '时序 · 会呼吸的花园 ↗' }
+];
+
+const showcaseImgs = document.querySelectorAll('.showcase-img');
+const showcaseDots = document.querySelectorAll('.showcase-dot');
+const showcaseLink = document.querySelector('#home-showcase-link');
+const showcaseKicker = document.querySelector('#showcase-kicker');
+const showcaseTitle = document.querySelector('#showcase-title');
+let slideIndex = 0;
+
+function setShowcaseSlide(idx) {
+  if (!showcaseImgs.length) return;
+  slideIndex = idx % SLIDES.length;
+  showcaseImgs.forEach((img, i) => img.classList.toggle('active', i === slideIndex));
+  showcaseDots.forEach((dot, i) => dot.classList.toggle('active', i === slideIndex));
+  const item = SLIDES[slideIndex];
+  if (showcaseLink) {
+    showcaseLink.href = '#' + item.route;
+    showcaseLink.dataset.routeLink = item.route;
+  }
+  if (showcaseKicker) showcaseKicker.textContent = item.kicker;
+  if (showcaseTitle) showcaseTitle.textContent = item.title;
+}
+
+showcaseDots.forEach(dot => {
+  dot.addEventListener('click', () => setShowcaseSlide(Number(dot.dataset.slide)));
+});
+
+document.querySelectorAll('.swiss-link[data-preview]').forEach(link => {
+  link.addEventListener('mouseenter', () => setShowcaseSlide(Number(link.dataset.preview)));
+});
+
+setInterval(() => {
+  if (document.body.classList.contains('is-home')) {
+    setShowcaseSlide(slideIndex + 1);
+  }
+}, 4800);
+
 // Interactive prototype inside Work 01 page (#page-work-wetland)
 document.addEventListener('click', event => {
   const filter = event.target.closest('[data-route]');

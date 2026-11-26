@@ -53,7 +53,7 @@
   </header>
 
   <main id="main">
-    <!-- PAGE 1: SWISS MINIMALIST POSTER HOMEPAGE -->
+    <!-- PAGE 1: EDITORIAL INTERACTIVE PERSONAL HOMEPAGE -->
     <section class="page-view active" id="page-home" data-page="home" aria-labelledby="hero-title">
       <div class="swiss-poster">
         <div class="swiss-top">
@@ -63,38 +63,61 @@
         </div>
 
         <div class="swiss-main">
-          <div class="swiss-title-block">
-            <h1 id="hero-title">张晓菡<span class="swiss-dot">.</span></h1>
-            <p class="swiss-sub">苏州大学风景园林 · UI 设计<br>从空间秩序到屏幕体验</p>
+          <div class="swiss-left">
+            <div class="swiss-title-block">
+              <h1 id="hero-title">张晓菡<span class="swiss-dot">.</span></h1>
+              <p class="swiss-sub">苏州大学风景园林 · 求职方向 UI 设计<br>从空间秩序到屏幕体验</p>
+            </div>
+
+            <nav class="swiss-nav" aria-label="主页选项">
+              <a class="swiss-link" href="#works" data-route-link="works" data-preview="0">
+                <span class="swiss-num">01</span>
+                <span class="swiss-label">作品展示</span>
+                <span class="swiss-meta">栖游 · 植间 · 时序</span>
+                <span class="swiss-arrow">↗</span>
+              </a>
+              <a class="swiss-link" href="#resume" data-route-link="resume" data-preview="1">
+                <span class="swiss-num">02</span>
+                <span class="swiss-label">个人简历</span>
+                <span class="swiss-meta">履历 · 在线 PDF</span>
+                <span class="swiss-arrow">↗</span>
+              </a>
+              <a class="swiss-link" href="#about" data-route-link="about" data-preview="2">
+                <span class="swiss-num">03</span>
+                <span class="swiss-label">关于我</span>
+                <span class="swiss-meta">设计视角 · 方法论</span>
+                <span class="swiss-arrow">↗</span>
+              </a>
+              <a class="swiss-link" href="#contact" data-route-link="contact" data-preview="0">
+                <span class="swiss-num">04</span>
+                <span class="swiss-label">联系我</span>
+                <span class="swiss-meta">实习与初级岗位</span>
+                <span class="swiss-arrow">↗</span>
+              </a>
+            </nav>
           </div>
 
-          <nav class="swiss-nav" aria-label="主页选项">
-            <a class="swiss-link" href="#works" data-route-link="works">
-              <span class="swiss-num">01</span>
-              <span class="swiss-label">作品展示</span>
-              <span class="swiss-arrow">↗</span>
+          <div class="swiss-showcase" aria-label="精选作品视觉预览">
+            <a class="showcase-frame" id="home-showcase-link" href="#work-wetland" data-route-link="work-wetland">
+              <img class="showcase-img active" src="assets/park-ui.jpg" alt="栖游 · 公园导览 App" width="1536" height="1024">
+              <img class="showcase-img" src="assets/exhibit-ui.jpg" alt="植间 · 自然的数字展厅" width="1536" height="1024">
+              <img class="showcase-img" src="assets/garden.jpg" alt="时序 · 会呼吸的花园" width="1536" height="1024">
+              <div class="showcase-overlay">
+                <span id="showcase-kicker">CASE 01 · 户外森系风格</span>
+                <strong id="showcase-title">栖游 · 公园导览 App ↗</strong>
+              </div>
             </a>
-            <a class="swiss-link" href="#resume" data-route-link="resume">
-              <span class="swiss-num">02</span>
-              <span class="swiss-label">个人简历</span>
-              <span class="swiss-arrow">↗</span>
-            </a>
-            <a class="swiss-link" href="#about" data-route-link="about">
-              <span class="swiss-num">03</span>
-              <span class="swiss-label">关于我</span>
-              <span class="swiss-arrow">↗</span>
-            </a>
-            <a class="swiss-link" href="#contact" data-route-link="contact">
-              <span class="swiss-num">04</span>
-              <span class="swiss-label">联系我</span>
-              <span class="swiss-arrow">↗</span>
-            </a>
-          </nav>
+            <div class="showcase-dots" role="tablist" aria-label="切换预览作品">
+              <button class="showcase-dot active" type="button" data-slide="0" aria-label="预览 栖游"></button>
+              <button class="showcase-dot" type="button" data-slide="1" aria-label="预览 植间"></button>
+              <button class="showcase-dot" type="button" data-slide="2" aria-label="预览 时序"></button>
+            </div>
+          </div>
         </div>
 
         <div class="swiss-bottom">
           <span>AVAILABLE FOR UI INTERNSHIP & JUNIOR ROLES · 2026</span>
-          <span>SCROLL OR SELECT AN INDEX</span>
+          <span>HOVER OR SELECT TO EXPLORE</span>
         </div>
       </div>
     </section>
